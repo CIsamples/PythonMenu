@@ -42,12 +42,8 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      # Make sure environment variables are set.
-                        export HARNESS_NODE_INDEX=<+strategy.iteration>
-                        export HARNESS_NODE_TOTAL=<+strategy.iterations>
-
-                        TESTS=`split_tests --glob "**/test_*.py" --split-by file_timing`
-                        pytest -v --junitxml="result_${HARNESS_NODE_INDEX}.xml" $TESTS
+                      TESTS=`split_tests --glob "**/test_*.py" --split-by file_timing`
+                      pytest -v --junitxml="result_<+strategy.iteration>.xml" $TESTS
                     reports:
                       type: JUnit
                       spec:
