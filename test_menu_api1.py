@@ -27,4 +27,3 @@ def test_get_all_menu_items1(client):
     assert data[0]['name'] == 'Cheeseburger'
     assert data[1]['name'] == 'Caesar Salad'
     assert data[2]['name'] == 'Chicken Alfredo'
-Footer
