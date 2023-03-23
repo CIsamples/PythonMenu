@@ -19,7 +19,7 @@ pipeline:
         spec:
           cloneCodebase: true
           platform:
-            os: MacOS
+            os: Linux
             arch: Arm64
           runtime:
             type: Cloud
@@ -35,3 +35,21 @@ pipeline:
                     command: |
                       python -m pip install --upgrade pip
                       pip install -r requirements.txt
+              - step:
+                  type: Run
+                  name: Run Tests in parallel
+                  identifier: Run_Tests_in_parallel
+                  spec:
+                    shell: Sh
+                    command: |-
+                      # Make sure environment variables are set.
+                        export HARNESS_NODE_INDEX=<+strategy.iteration>
+                        export HARNESS_NODE_TOTAL=<+strategy.iterations>
+
+                        TESTS=`split_tests --glob "**/test_*.py" --split-by file_timing`
+                        pytest -v --junitxml="result_${HARNESS_NODE_INDEX}.xml" $TESTS
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "**/*.xml"
