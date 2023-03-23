@@ -60,4 +60,4 @@ pipeline:
                         action:
                           type: Ignore
                   strategy:
-                    parallelism: 2
+                    parallelism: 3
