@@ -52,7 +52,7 @@ pipeline:
                       type: JUnit
                       spec:
                         paths:
-                          - "**/*.xml"
+                          - result_${HARNESS_NODE_INDEX}.xml
                   failureStrategies:
                     - onFailure:
                         errors:
