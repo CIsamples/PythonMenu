@@ -53,6 +53,11 @@ pipeline:
                       spec:
                         paths:
                           - "**/*.xml"
-                  failureStrategies: []
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - AllErrors
+                        action:
+                          type: Ignore
                   strategy:
                     parallelism: 2
