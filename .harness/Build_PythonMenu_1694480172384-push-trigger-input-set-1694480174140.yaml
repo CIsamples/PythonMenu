@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_PythonMenu_1694480172384-push-trigger-input-set
+  identifier: Build_PythonMenu_1694480172384pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Template_test
+  pipeline:
+    identifier: Build_PythonMenu_1694480172384
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
