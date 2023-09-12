@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_PythonMenu_1694480172384-pr-trigger-input-set
+  identifier: Build_PythonMenu_1694480172384prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: Template_test
+  pipeline:
+    identifier: Build_PythonMenu_1694480172384
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
